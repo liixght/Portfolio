@@ -1,148 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temi - 0 to 1 Developer</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
-    <title>Portfolio</title>
+    <!-- FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/a648ec540e.js" crossorigin="anonymous"></script>
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="description" content="Temi is a Front-End Developer with a creative edge.">
 </head>
 <body>
-        <nav class="navbar">
-            <p>Temi</p>
-            <div class="links">
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Lore</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </div>
-            <!-- <h1 class="filler">Temi</h1> -->
-            <input class="search" type="search" placeholder="🔍">
-        </nav>
+    <nav class="navbar" id="navbar">
+        <div class="nav-links">
+            <div class="nav-item"><a href="#welcome-section">About</a></div>
+            <div class="nav-item"><a href="#projects">Projects</a></div>
+            <div class="nav-item"><a href="#contact">Contact</a></div>
+        </div>
+    </nav>
 
-    <div class="intro">
-        <p class="intro-text">Hi. I'm <span class="temi">Temi</span> — a Front-End Developer with a creative edge. I build responsive web interfaces with HTML, CSS, and JavaScript, and enhance them with visuals powered by tools like Photoshop and DaVinci Resolve. My workflow bridges clean code and sharp design — whether it’s a smooth UI or standout motion graphics, I’m all about delivering polished, consistent results.
-        </p>
+    <!-- SOCIAL SIDEBAR -->
 
+    <div class="socials">
+        <!-- <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle-checkbox">
+            <label for="menu-toggle-checkbox">
+                <span></span><span></span><span></span>
+            </label>
+        </div> -->
+
+
+        <i class="fa-solid fa-arrow-up-right-from-square social-item "></i>
+        <div class="demacation"></div>
+
+        <div class="social-item">
+            <a href="https://github.com/liixght" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+        <div class="social-item">
+            <a href="https://www.linkedin.com/in/temilope/" target="_blank"> 
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <div class="social-item">
+            <a id="profile-link" href="https://www.freecodecamp.org/liixght" target="_blank">
+                <i class="fa-brands fa-free-code-camp"></i>
+            </a>
+        </div>
+        <div class="social-item">
+            <a href="https://www.youtube.com" target="_blank">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+        </div>
+        <div class="social-item">
+            <a href="https://www.tiktok.com/@r3llb" target="_blank" referrerpolicy="noreferrer">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+        <div class="demacation"></div>
+        <div class="social-item" >
+            <a href="mailto:chat.temilope@gmail.com" target="_blank" value="call me">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+        <div class="social-item" >
+            <a href="tel:08166372122" target="_blank" value="call me">
+                <i class="fa-solid fa-phone"></i>
+            </a>
+        </div>
     </div>
 
-    <!-- <div class="body">
-        <div class="profile">
-            <h3>Front End Developer</h3>
-        </div>
+    <!-- MAIN CONTENT -->
+    <main class="main">
 
-        <div class="skillset">
-            <h1>My Current Tech Stack</h1>
-            <div class="skills">
-                <div class="skill html">
-                    <img src="https://img.icons8.com/color/48/000000/html-5--v1.png" alt="html icon">
-                    <h3>HTML5</h3>
-                    <h4>2+ Years</h4>
+        <section id="welcome-section">
+            <input type="checkbox" id="overflow-toggle">
+            <label for="overflow-toggle"><h1>whoami</h1></label>
+            
+        </section>
+
+        <section id="projects" class="project-section">
+            <h1 class="txt-c">HERE ARE MY PROJECTS</h1>
+
+           <div class="projects">
+                <div class="project-tile">
+                    <a href="https://liixght.github.io/Technical-Documentation-Page/" target="_blank">
+                        <img src="Images/desktop/TDP.png" alt="Project 1">
+                    </a>
+                    <div class="project-description">
+                            <h2 class="header gold nofont">Technical Doc. Page</h2>
+                            <p>A Simple Technical Documentation On CSS Flexbox vs Grid</p>
+                    </div>
                 </div>
-                <div class="skill css">
-                    <img src="https://img.icons8.com/color/48/000000/css3.png" alt="css icon">
-                    <h3>CSS</h3>
-                    <h4>2+ Years</h4>
-
+                <div class="project-tile">
+                    <a href="https://github.com/liixght/Project-2" target="_blank">
+                        <img src="Images/desktop/priimium.png" alt="Project 2">
+                    </a>
+                    <div class="project-description">
+                            <h2 class="header gold nofont">PRIIMIUM</h2>
+                            <p>PRIIMIUM is a platform that represents exquisiteness in technology</p>
+                    </div>
                 </div>
-                <div class="skill js">
-                    <img src="https://img.icons8.com/color/48/000000/javascript--v1.png" alt="js icon">
-                    <h3>JAVASCRIPT</h3>
-                    <h4>1+ Years</h4>
+                <div class="project-tile">
+                    <a href="https://github.com/liixght/Project-3" target="_blank">
+                        <img src="Images/desktop/ClientPortfolio.png" alt="Project 3">
+                    </a>
+                    <div class="project-description">
+                            <h2 class="header gold">Client Portfolio</h2>
+                            <p>Developed a Unique Portfolio for my first Client</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div> -->
-
-
-    <div class="body">
-        <div class="skillset">
-            <p>My Current Tech Stack</p>
-            <div class="skills">
-                <div class="skill html">
-                    <img src="https://img.icons8.com/color/48/000000/html-5--v1.png" alt="html icon">
-                    <p>HTML5</p>
-                    <p>2+ Years</p>
+                <div class="project-tile">
+                    <a href="https://github.com/liixght/Project-4" target="_blank">
+                        <img src="Images/desktop/counterapp.png" alt="Project 4">
+                    </a>
+                    <div class="project-description">
+                            <h2 class="header gold">Counter App</h2>
+                            <p>A Simple Javascript Counter App</p>
+                    </div>
                 </div>
-                <div class="skill css">
-                    <img src="https://img.icons8.com/color/48/000000/css3.png" alt="css icon">
-                    <p>CSS</p>
-                    <p>2+ Years</p>
-
-                </div>
-                <div class="skill js">
-                    <img src="https://img.icons8.com/color/48/000000/javascript--v1.png" alt="js icon">
-                    <p>JAVASCRIPT</p>
-                    <p>1+ Years</p>
-                </div>
-            </div>
-        </div>
-
-        
-    </div>
-
-
-<div class="body">
-      <div class="skillset">
-            <p>My Current Creative Stack</p>
-            <div class="skills">
-                <div class="skill davinci">
-                    <img src="https://img.icons8.com/color/48/davinci-resolve.png" alt="DaVinci Resolve" class="davinci-logo">
-                    <p>DaVinci Resolve</p>
-                    <p>1+ Years</p>
-                </div>
-                
-                <div class="skill pp">
-                    <img src="https://img.icons8.com/color/48/davinci-resolve.png" alt="DaVinci Resolve Fusion icon">
-                    <p>Fusion</p>
-                    <p>1+ Years</p>
-                </div>
-
-                <div class="skill ps">
-                    <img src="https://img.icons8.com/color/48/adobe-photoshop--v1.png" alt="photoshop icon">
-                    <p>Photoshop</p>
-                    <p>2+ Years</p>
-                </div>
-            </div>
-        </div>  
-</div>
-
-
-
-
-    <hr>
-
-    <div id="contact" class="contact">
-        <form action="Submit" method="post" class="contact-form">
-        <h1>Contact me</h1>
-        <!-- <label for="name"></label> -->
-        <input type="text" name="name" id="name" placeholder="Name" required/>
-        <!-- <label for="email"></label> -->
-        <input type="email" name="email" id="email" placeholder="Email" required/>
-        <label for="message" class="message">Enter Your message:</label>
-        <textarea name="message" id="message" rows="12" cols="60" required></textarea>
-
-        <input class="send" type="submit" value="Send">
-        <input class="reset" type="reset" value="reset">
-        </form>
-
-    </div>
-
-    <div class="lore">
-            <h1>Lore</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quasi, doloremque.
-                Quisquam, voluptas.
-                Voluptatum, doloremque.
-                Quasi, doloremque.
-                Quisquam, voluptas.
-                Voluptatum, doloremque.
-                Quasi, doloremque.
-        </div>
+           </div>
+        </section>
+    </main>
 
     <footer id="footer">
-        <p>Temi @ 2025</p>
-        <p><a href="mailto:chat.temilope@gmail.com">chat.temilope@gmail.com</a></p>
+        <section class="contact-me">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:chat.temilope@gmail.com">chat.temilope@gmail.com</a></p>
+            <p><i class="fa-solid fa-phone"></i> Phone: <a href="tel:08166372122">08166372122</a></p>
+
+        </section>
+
+        <section class="check-out">
+            <h2>Check Out My Socials</h2>
+            <div class="socials-footer">
+                <div class="social-item">
+                    <a href="https://github.com/liixght" target="_blank">
+                        <p><i class="fa-brands fa-github"></i> GitHub</p>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="https://www.linkedin.com/in/temilope/" target="_blank"> 
+                        <p><i class="fa-brands fa-linkedin"></i> LinkedIn</p>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a id="profile-link" href="https://www.freecodecamp.org/liixght" target="_blank">
+                        <p><i class="fa-brands fa-free-code-camp"></i> FreeCodeCamp</p>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="https://www.youtube.com" target="_blank">
+                        <p><i class="fa-brands fa-youtube"></i> YouTube</p>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="https://www.tiktok.com/@r3llb" target="_blank" referrerpolicy="noreferrer">
+                        <p><i class="fa-brands fa-tiktok"></i> TikTok</p>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="@liixght" target="_blank">
+
+                        <p><i class="fa-brands fa-snapchat"></i> Snapchat</p>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+        <p class="txt-r">Made with <i class="fa-solid fa-heart"></i> by Temi</p>
     </footer>
+
 </body>
 </html>
