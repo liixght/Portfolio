@@ -4,34 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temi - 0 to 1 Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <!-- FONTAWESOME -->
     <script src="https://kit.fontawesome.com/a648ec540e.js" crossorigin="anonymous"></script>
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- JAVASCRIPT -->
+    <!-- <script src="index.js"></script> -->
     <meta name="description" content="Temi is a Front-End Developer with a creative edge.">
+
 </head>
-<body>
+<body id="body">
+    <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
+        <a href="#html">
+            <img class="liixght" src="https://liixght.github.io/priimium/images/003-diamond.png" alt="liixght">
+        </a>
+        <!-- <div class="nav-menu"> -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+        <!-- </div> -->
         <div class="nav-links">
-            <div class="nav-item"><a href="#welcome-section">About</a></div>
-            <div class="nav-item"><a href="#projects">Projects</a></div>
-            <div class="nav-item"><a href="#contact">Contact</a></div>
+            <a class="nav-item" href="#html"><div>About</div></a>
+            <a class="nav-item" href="#projects"><div>Projects</div></a>
+            <a class="nav-item contact" href="#contact"><div>Contact</div></a>
         </div>
     </nav>
 
     <!-- SOCIAL SIDEBAR -->
 
     <div class="socials">
-        <!-- <div class="menu-toggle">
-            <input type="checkbox" id="menu-toggle-checkbox">
-            <label for="menu-toggle-checkbox">
-                <span></span><span></span><span></span>
-            </label>
-        </div> -->
-
 
         <i class="fa-solid fa-arrow-up-right-from-square social-item "></i>
         <div class="demacation"></div>
@@ -76,13 +85,63 @@
 
     <!-- MAIN CONTENT -->
     <main class="main">
-
+        <!-- INTRODUCTION -->
         <section id="welcome-section">
-            <input type="checkbox" id="overflow-toggle">
-            <label for="overflow-toggle"><h1>whoami</h1></label>
+            <div class="hero">
+                <p class="whoami">~ whoami</p>
+                <h1 class="gold txt-l">Liixght - Developer &lt;/&gt;</h1>
+                <p class="intro">Hi. I'm <span class="temi gold">Temi</span> — a Front-End Developer with a creative edge. I build responsive web interfaces with HTML, CSS, and JavaScript, and enhance them with visuals powered by tools like Photoshop and DaVinci Resolve. My workflow bridges clean code and sharp design — whether it's a smooth UI or standout motion graphics, I'm all about delivering polished, consistent results.</p>
+            </div>
+            <!-- Skills Section -->
+            <div class="skills-section">
+                <h2>These are my skills</h2>
+                <div class="skills">
+                    <div class="skill highlight-gold">
+                        <i class="fa-brands fa-html5"></i>
+                        <p>HTML5</p>
+                        <p>2+ Years</p>
+                    </div>
+                    <div class="skill highlight-gold">
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <p>CSS3</p>
+                        <p>2+ Years</p>
+                    </div>
+                    <div class="skill highlight-gold">
+                        <i class="fa-brands fa-js"></i>
+                        <p>JavaScript</p>
+                        <p>1 Month</p>
+                    </div>
+                    <div class="skill highlight-gold">
+                        <i class="fa-brands fa-git"></i>
+                        <p>Git</p>
+                        <p>6 Months</p>
+                    </div>
+                    <div class="skill highlight-gold">
+                        <i class="fa-brands fa-github"></i>
+                        <p>Github</p>
+                        <p>1 Year</p>
+                    </div>
+                    <div class="skill highlight-gold">
+                        <i class="fa-brands fa-linux"></i>
+                        <p>Linux</p>
+                        <p>1 Month</p>
+                    </div>
+                </div>
+                <p class="">Other Proficiencies</p>
+                <div class="additional-skills">
+                        <div class="skill highlight-gold">
+                        <i class="fa-brands fa-davinci-resolve"></i>
+                        <p>Davinci Resolve</p>
+                        </div>
+                        <div class="skill highlight-gold">
+                            <i class="fa-brands fa-photoshop"></i>
+                            <p>Photoshop</p>
+                        </div>
+                    </div>
+            </div>
             
         </section>
-
+        <!-- PROJECTS -->
         <section id="projects" class="project-section">
             <h1 class="txt-c">HERE ARE MY PROJECTS</h1>
 
@@ -124,9 +183,21 @@
                     </div>
                 </div>
            </div>
+        </section> 
+
+        <!-- CONTACT FORM -->
+        <section class="contact-form" id="contact">
+            <form class="form" action="POST">
+                <h1>Get In Touch</h1>
+                <input type="text" name="name" id="name" placeholder="Name" required>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <textarea name="message" id="message" placeholder="Let's Build Worlds Together!" rows="10" required></textarea>
+                <button class="send" type="submit">Send</button>
+            </form>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer id="footer">
         <section class="contact-me">
             <h2>Contact Me</h2>
@@ -150,17 +221,17 @@
                 </div>
                 <div class="social-item">
                     <a id="profile-link" href="https://www.freecodecamp.org/liixght" target="_blank">
-                        <p><i class="fa-brands fa-free-code-camp"></i> FreeCodeCamp</p>
-                    </a>
-                </div>
-                <div class="social-item">
-                    <a href="https://www.youtube.com" target="_blank">
-                        <p><i class="fa-brands fa-youtube"></i> YouTube</p>
+                        <p><i class="fa-brands fa-free-code-camp"></i> freeCodeCamp</p>
                     </a>
                 </div>
                 <div class="social-item">
                     <a href="https://www.tiktok.com/@r3llb" target="_blank" referrerpolicy="noreferrer">
                         <p><i class="fa-brands fa-tiktok"></i> TikTok</p>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="https://www.youtube.com" target="_blank">
+                        <p><i class="fa-brands fa-youtube"></i> YouTube</p>
                     </a>
                 </div>
                 <div class="social-item">
@@ -171,9 +242,9 @@
                 </div>
 
             </div>
-
         </section>
-        <p class="txt-r">Made with <i class="fa-solid fa-heart"></i> by Temi</p>
+
+        <p class="txt-r">Made with <i class="fa-solid fa-heart" style="color: var(--gold);"></i> by Temi.</p>
     </footer>
 
 </body>
