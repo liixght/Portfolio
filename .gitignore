@@ -1,0 +1,19 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules
+.pnp
+
+# Build output
+dist
+dist-ssr
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+
+# OS
+.DS_Store

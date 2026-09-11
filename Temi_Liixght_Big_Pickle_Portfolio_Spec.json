@@ -1,0 +1,564 @@
+{
+  "project_name": "Temi (Liixght) — 3D Developer Portfolio",
+  "purpose": "Build a working, visually exceptional, memorable developer portfolio that presents Temi as a Computer Science student actively building real software. The experience should create immediate visual impact, make his identity and work extremely easy to understand, and reward continued exploration through craftsmanship and delightful interaction without becoming an over-engineered or AI-looking 3D showcase.",
+  "agent_instructions": {
+    "primary_priority": [
+      "Working and reliable comes first.",
+      "Visual impact and craftsmanship come second.",
+      "Clarity and ease of understanding must always be preserved.",
+      "Do not add complexity merely because it is technically impressive."
+    ],
+    "design_goal": "Immediate impact -> progressively stronger presentation -> clear understanding of Temi as a developer -> strong desire to keep exploring.",
+    "autonomy": {
+      "rule": "Use judgment within the defined concept.",
+      "allowed": [
+        "Choose technically equivalent implementations.",
+        "Simplify an implementation when necessary for stability.",
+        "Improvise around browser, library, performance, or implementation failures.",
+        "Replace an unstable implementation with another approach that preserves the specified behavior and concept."
+      ],
+      "not_allowed": [
+        "Do not redesign the concept.",
+        "Do not add or remove rooms or major sections.",
+        "Do not change the navigation model.",
+        "Do not introduce a backend or other excluded architecture.",
+        "Do not replace the visual direction with a different aesthetic.",
+        "Do not expand scope because an alternative idea seems cool."
+      ],
+      "escalation_rule": "If solving a technical problem requires changing the defined structure, concept, or major user experience, stop and ask the user rather than making that conceptual change autonomously."
+    },
+    "execution": [
+      "Work sequentially through the defined iterations.",
+      "Only work on the current iteration.",
+      "Do not begin later-iteration work early.",
+      "Every iteration must leave the project in a complete, runnable, testable state.",
+      "Never knowingly leave a broken or non-rendering state.",
+      "Run technical verification before presenting an iteration for review.",
+      "Do not expand scope without a specified reason."
+    ],
+    "honesty": [
+      "Never claim Temi has mastery of React, Flutter, Node, or other technologies unless explicitly stated.",
+      "Present him as a Computer Science student actively building and developing his craft.",
+      "Do not exaggerate projects, experience, proficiency, or impact."
+    ]
+  },
+  "git_workflow": {
+    "mode": "human_approval_between_iterations",
+    "rules": [
+      "Do not automatically commit after completing an iteration.",
+      "Do not automatically push to GitHub.",
+      "Complete only the current iteration.",
+      "Run all required technical verification for the current iteration.",
+      "Stop when the iteration is technically complete and ready for review.",
+      "Report verification results, files changed, and anything the user should manually inspect.",
+      "Wait for the user to explicitly approve the iteration.",
+      "If the user requests changes, modify the current iteration and repeat verification.",
+      "Do not commit until the user explicitly approves the current iteration.",
+      "After approval, create the Git commit for the completed iteration before beginning the next iteration.",
+      "Push only when explicitly requested by the user."
+    ],
+    "review_gate": {
+      "sequence": [
+        "Build current iteration.",
+        "Run technical verification.",
+        "Stop and report results.",
+        "User manually reviews the site.",
+        "If changes are requested, keep working on the same iteration.",
+        "Repeat verification after changes.",
+        "When the user approves, commit the iteration.",
+        "Only then begin the next iteration."
+      ],
+      "approval_examples": [
+        "continue",
+        "approved",
+        "move on",
+        "next iteration",
+        "looks good"
+      ],
+      "do_not_continue_examples": [
+        "wait",
+        "hold on",
+        "I want to change something",
+        "not yet"
+      ]
+    }
+  },
+  "success_criteria": {
+    "priority_order": [
+      "Application boots and renders correctly.",
+      "Core 3D scene and scroll system work reliably.",
+      "Camera movement is smooth in forward and reverse directions.",
+      "Content remains readable and correctly associated with the relevant 3D environment.",
+      "Project, skill, and tool content is data-driven.",
+      "The experience looks exceptionally crafted without unnecessary complexity.",
+      "Interactions feel deliberate and delightful.",
+      "WebGL fallback works.",
+      "No console errors or avoidable warnings remain."
+    ],
+    "experience_test": [
+      "A coworker, recruiter, employer, or potential client should quickly understand that Temi is a Computer Science student actively building software.",
+      "The visitor should understand what he builds without having to decode the 3D environment.",
+      "The presentation should create enough curiosity and craftsmanship that visitors want to continue scrolling.",
+      "The portfolio should feel like a polished developer portfolio first and a 3D experience second.",
+      "If a 3D effect conflicts with readability, accessibility, performance, or usability, usability wins."
+    ]
+  },
+  "tech_stack": {
+    "framework": "React 19 + Vite",
+    "3d": [
+      "@react-three/fiber",
+      "@react-three/drei"
+    ],
+    "styling": "Tailwind CSS v4",
+    "dom_animation": "motion",
+    "allowed_support_dependency": "maath only if needed for camera/object damping",
+    "state": "Local React state/hooks only",
+    "routing": "None",
+    "backend": "None",
+    "data": "Local static JS data",
+    "prohibited_unnecessary_dependencies": [
+      "Redux",
+      "Zustand",
+      "React Router",
+      "Backend frameworks",
+      "Database libraries",
+      "UI component libraries unless strictly necessary",
+      "Custom GLSL shader systems"
+    ]
+  },
+  "architecture": {
+    "recommended_structure": {
+      "src/components": [
+        "PortfolioCanvas.jsx",
+        "CameraRig.jsx",
+        "Room.jsx",
+        "HeroRoom.jsx",
+        "AboutRoom.jsx",
+        "WorkRoom.jsx",
+        "SceneOverlay.jsx",
+        "WebGLFallback.jsx"
+      ],
+      "src/data": [
+        "projects.js",
+        "skills.js",
+        "tools.js"
+      ],
+      "src/hooks": [
+        "useScrollCamera.js"
+      ],
+      "src/config": [
+        "cameraWaypoints.js"
+      ],
+      "root": [
+        "App.jsx",
+        "main.jsx"
+      ],
+      "public": [
+        "Static assets only"
+      ]
+    },
+    "principle": "Keep components small and understandable. Separate camera logic, scene composition, overlays, and static content data."
+  },
+  "technical_guidelines": {
+    "3d_style": "Low-poly, geometric, crystalline, angular, dark-first.",
+    "shaders": "No custom GLSL shaders.",
+    "drei": "Prefer stable Drei helpers over custom implementations.",
+    "scroll": "Use ScrollControls and useScroll rather than custom scroll listeners.",
+    "camera_logic": "Isolate scroll-to-camera behavior in one hook/component.",
+    "scene_layout": "Arrange the three rooms along the negative Z axis with enough spacing to prevent visual overlap.",
+    "animation": "Use motion only for DOM/Html overlay fades and transitions. Use Three/R3F/Drei mechanisms for 3D animation.",
+    "performance": "Prefer simple geometry, controlled lighting, reusable materials, and limited object counts over excessive effects.",
+    "no_gimmicks": "Do not add effects, particles, post-processing, or animations solely to make the site look technically complex.",
+    "meaningful_objects": "Every prominent 3D element must have a clear purpose: storytelling, identity, navigation, atmosphere, content presentation, or composition. Avoid decorative bloat.",
+    "meaning_boundary": "Meaningful does not require every object to be a literal metaphor. An element may exist for composition or atmosphere, but it must improve the experience rather than merely occupy space."
+  },
+  "identity_and_branding": {
+    "name": "Temi",
+    "alias": "Liixght",
+    "positioning": "Computer Science student actively building real software and developing his craft.",
+    "hero_identity": "Make it immediately clear that Temi is a developer who is actively building.",
+    "tone": "Confident but honest. Ambitious without pretending to be an expert.",
+    "about": "Include calisthenics as part of Temi's identity without allowing it to overshadow his developer identity.",
+    "claims": [
+      "Do not claim mastery of React, Flutter, Node, or other technologies unless explicitly supported.",
+      "Do not oversell projects.",
+      "Use the actual state of the projects."
+    ]
+  },
+  "visual_identity": {
+    "palette": {
+      "gold": "#ccaa77",
+      "dark_gold": "#9c7841",
+      "charcoal": "#222222",
+      "off_white": "#f5f5f5",
+      "black": "#0a0a0a"
+    },
+    "font": "Poppins",
+    "aesthetic": [
+      "Low-poly",
+      "Geometric",
+      "Crystalline",
+      "Angular",
+      "Dark-first",
+      "Premium but restrained",
+      "Flat glassmorphism overlays",
+      "Greek-god/gamified influence without becoming theatrical"
+    ],
+    "visual_goal": "Absolutely mind-blowing through a combination of craftsmanship, presentation, storytelling, and delightful interaction. It should not feel like a movie, game demo, or AI-generated 3D showcase."
+  },
+  "camera_and_overlay_system": {
+    "scroll_controls": {
+      "component": "ScrollControls",
+      "pages": 3,
+      "damping": 0.25
+    },
+    "source": "useScroll().offset",
+    "waypoints": {
+      "room_1_hero": {
+        "position": [
+          0,
+          0,
+          8
+        ],
+        "lookAt": [
+          0,
+          0,
+          0
+        ]
+      },
+      "room_2_craft": {
+        "position": [
+          0,
+          0,
+          -4
+        ],
+        "lookAt": [
+          0,
+          0,
+          -12
+        ]
+      },
+      "room_3_work": {
+        "position": [
+          0,
+          0,
+          -16
+        ],
+        "lookAt": [
+          0,
+          0,
+          -24
+        ]
+      }
+    },
+    "implementation": [
+      "Read normalized scroll offset.",
+      "Map the offset continuously across the three camera waypoints.",
+      "Interpolate between waypoint positions with Vector3 lerp or an equivalent stable method.",
+      "Damp the actual camera toward the target rather than directly snapping it.",
+      "Call camera.lookAt() each frame using the interpolated lookAt target.",
+      "Do not directly manipulate camera Euler rotation unless required by a proven technical issue."
+    ],
+    "requirements": [
+      "Continuous camera movement through all three rooms.",
+      "No snapping.",
+      "No rotation glitches.",
+      "Smooth slow scrolling.",
+      "Smooth fast scrolling.",
+      "Smooth reverse scrolling.",
+      "Stable halfway positions.",
+      "No stuck camera states."
+    ]
+  },
+  "overlay_system": {
+    "technology": "Drei Html",
+    "rules": [
+      "Keep content anchored near its associated 3D content.",
+      "Use transform where appropriate.",
+      "Use occlude where appropriate.",
+      "Do not put the entire portfolio UI inside one giant Html component.",
+      "Prefer distance-based opacity fading when stable.",
+      "If distance fading becomes unreliable, use deterministic scroll-range visibility/opacity instead.",
+      "Text must remain easy to read.",
+      "Overlays should feel integrated with the 3D world without sacrificing conventional usability."
+    ],
+    "content_strategy": {
+      "default": "Short TL;DR upfront.",
+      "expanded": "Allow visitors to reveal more project/technical detail when they want it.",
+      "principle": "Optimize for fast comprehension first, depth second."
+    }
+  },
+  "rooms": {
+    "room_1_hero": {
+      "purpose": "Immediate identity and impact.",
+      "elements": [
+        "Low-poly crystal/diamond centerpiece.",
+        "Temi / Liixght identity.",
+        "Clear indication that he is a Computer Science student actively building software.",
+        "Short supporting tagline.",
+        "Subtle scroll indicator."
+      ],
+      "goal": "Create immediate impact without overwhelming the visitor."
+    },
+    "room_2_craft": {
+      "purpose": "Show the person and craft behind the work.",
+      "elements": [
+        "About section.",
+        "Calisthenics reference as part of identity.",
+        "Skills rendered from skills.js.",
+        "Tools rendered from tools.js."
+      ],
+      "skills_schema": {
+        "name": "string",
+        "category": "string",
+        "proficiencyLabel": "Learning | Building with | Comfortable with"
+      },
+      "tools_schema": {
+        "name": "string",
+        "category": "string",
+        "note": "string"
+      },
+      "seeded_tools": [
+        "M4 MacBook Air 16GB/512GB",
+        "iTerm2 + P10k + Oh My Zsh",
+        "Trae",
+        "Ollama llama3.1:8b",
+        "Ollama qwen2.5-coder:7b",
+        "OpenCode + Big Pickle",
+        "Git + GitHub"
+      ]
+    },
+    "room_3_work": {
+      "purpose": "Present real work clearly and memorably, then provide contact/follow-up paths.",
+      "project_schema": {
+        "id": "string",
+        "title": "string",
+        "description": "string",
+        "stack": [
+          "string"
+        ],
+        "tag": "string",
+        "featured": "boolean",
+        "image": "string",
+        "links": {
+          "github": "string",
+          "live": "string"
+        }
+      },
+      "featured_projects": [
+        {
+          "title": "Cheralite",
+          "tag": "Collaborative"
+        },
+        {
+          "title": "LiixCF React",
+          "tag": "Solo"
+        }
+      ],
+      "non_featured_projects": [
+        "Daily Dairy",
+        "Cryptochecker",
+        "Responsive Design Practice",
+        "JSON List App",
+        "Weather App",
+        "Currency Converter"
+      ],
+      "project_rules": [
+        "All listed projects are Solo except Cheralite, which is Collaborative.",
+        "Use placeholder images where specified.",
+        "Exclude ecommerce_app_mb.",
+        "Do not invent achievements or functionality.",
+        "Make the first-view project information concise, with deeper information available on expansion."
+      ],
+      "contact": {
+        "email": "mailto:chat.temilope@gmail.com",
+        "github": "https://github.com/liixght",
+        "linkedin": "https://linkedin.com/in/temilope/",
+        "form": "No functional contact form."
+      },
+      "ending_goal": "Serve both professional contact intent and the impression that Temi is an actively developing engineer worth following."
+    }
+  },
+  "webgl_fallback": {
+    "requirement": "Provide a real fallback when WebGL cannot run.",
+    "detection": "Use a real WebGL context capability check rather than checking only for window.WebGLRenderingContext.",
+    "fallback_design": "Flat, polished dark portfolio presentation containing the core identity, skills, projects, and contact content.",
+    "rule": "The fallback must still communicate the portfolio's core value even without the 3D experience."
+  },
+  "iterations": [
+    {
+      "id": 1,
+      "name": "Refresh portfolio to React + Vite",
+      "tasks": [
+        "Create or refresh the React + Vite application.",
+        "Install only the required dependencies.",
+        "Create a minimal working R3F Canvas.",
+        "Establish the visual foundation and a simple low-poly shape.",
+        "Do not implement scroll-driven navigation yet."
+      ],
+      "do_not_do": [
+        "No camera fly-through.",
+        "No project system.",
+        "No complex environment.",
+        "No unnecessary animation systems."
+      ],
+      "verification": [
+        "Development server starts.",
+        "Production build succeeds.",
+        "Canvas renders.",
+        "No console errors.",
+        "Basic visual foundation is manually inspectable."
+      ],
+      "review": "User manually evaluates whether the initial visual direction feels premium, intentional, and aligned with the concept."
+    },
+    {
+      "id": 2,
+      "name": "Add scroll-driven camera fly-through across 3 rooms",
+      "tasks": [
+        "Implement ScrollControls.",
+        "Implement the three exact camera waypoints.",
+        "Create the isolated scroll camera logic.",
+        "Add the three room positions along negative Z.",
+        "Implement smooth continuous interpolation and damping.",
+        "Add initial Html overlay association."
+      ],
+      "do_not_do": [
+        "Do not add project cards or large data systems yet.",
+        "Do not add unnecessary post-processing.",
+        "Do not replace the specified camera model."
+      ],
+      "verification": [
+        "Slow scroll is smooth.",
+        "Fast scroll is smooth.",
+        "Reverse scroll is smooth.",
+        "Halfway positions behave correctly.",
+        "No snapping.",
+        "No camera rotation glitches.",
+        "No stuck camera states.",
+        "Development server and production build succeed.",
+        "No console errors."
+      ],
+      "review": "User manually judges whether the camera movement actually feels good, not merely whether it technically works."
+    },
+    {
+      "id": 3,
+      "name": "Add project and skills/tools data structures with card rendering",
+      "tasks": [
+        "Create skills.js.",
+        "Create tools.js.",
+        "Create projects.js.",
+        "Render skills and tools from data.",
+        "Render project cards from data.",
+        "Implement concise TL;DR presentation with expansion for additional detail.",
+        "Add the core identity, about, work, and contact overlays."
+      ],
+      "do_not_do": [
+        "Do not duplicate project content directly across components.",
+        "Do not invent project claims.",
+        "Do not create a backend or dynamic content system."
+      ],
+      "verification": [
+        "Changing data changes rendered content.",
+        "All required projects appear.",
+        "ecommerce_app_mb is excluded.",
+        "Cheralite is marked Collaborative.",
+        "LiixCF React is marked Solo.",
+        "Contact links work.",
+        "Text remains readable.",
+        "Build succeeds.",
+        "No console errors."
+      ],
+      "review": "User evaluates whether the portfolio communicates who he is and what he builds quickly enough."
+    },
+    {
+      "id": 4,
+      "name": "Add 3D dressing, animations, and visual polish",
+      "tasks": [
+        "Dress each room with intentional low-poly objects.",
+        "Give prominent objects a clear purpose in identity, storytelling, navigation, atmosphere, composition, or content presentation.",
+        "Add restrained 3D animation.",
+        "Add delightful interactions where they improve the experience.",
+        "Polish materials, lighting, spacing, typography, overlays, transitions, and composition.",
+        "Make the progression from hero to craft to work increasingly impressive."
+      ],
+      "do_not_do": [
+        "No decorative object spam.",
+        "No effects merely for technical spectacle.",
+        "No movie-like overproduction.",
+        "No AI-looking generic 3D environment.",
+        "No interaction that makes the portfolio harder to use."
+      ],
+      "verification": [
+        "The experience feels polished on normal scrolling.",
+        "Interactions feel responsive and intentional.",
+        "Visual hierarchy remains clear.",
+        "Projects remain easy to digest.",
+        "No major performance regressions.",
+        "Build succeeds.",
+        "No console errors."
+      ],
+      "review": "This is the primary subjective visual review. User decides whether the portfolio is genuinely impressive without feeling overdone."
+    },
+    {
+      "id": 5,
+      "name": "Add WebGL fallback and final cleanup",
+      "tasks": [
+        "Implement and test the WebGL fallback.",
+        "Clean up component boundaries and unused code.",
+        "Remove unnecessary dependencies.",
+        "Remove debug output.",
+        "Check responsive behavior where practical.",
+        "Verify links, project data, overlays, camera behavior, and final visual consistency."
+      ],
+      "do_not_do": [
+        "Do not introduce new features.",
+        "Do not change the core concept.",
+        "Do not add new rooms or sections.",
+        "Do not add a backend."
+      ],
+      "verification": [
+        "Production build succeeds.",
+        "WebGL fallback works.",
+        "All required links work.",
+        "All required content is present.",
+        "Camera works forward and backward.",
+        "No console errors or avoidable warnings.",
+        "No excluded project appears.",
+        "The final experience satisfies the global definition of done."
+      ],
+      "review": "User performs final manual review before approving the final iteration."
+    }
+  ],
+  "global_definition_of_done": [
+    "The site boots reliably.",
+    "The production build succeeds.",
+    "The three-room scroll-driven camera works smoothly in both directions.",
+    "The 3D environment is low-poly, intentional, and visually exceptional without being bloated.",
+    "Every prominent 3D element has a defensible purpose.",
+    "The first screen immediately communicates Temi as a Computer Science student actively building software.",
+    "The portfolio makes his work easy to understand without requiring visitors to decode the 3D world.",
+    "Projects use the defined data structure and remain honest.",
+    "Project information starts concise and can be expanded for depth.",
+    "Interactions are delightful but purposeful.",
+    "WebGL fallback works.",
+    "ecommerce_app_mb is excluded.",
+    "No backend, authentication, database, routing, functional form, or other excluded system has been introduced.",
+    "No console errors remain.",
+    "The user has manually reviewed and approved every completed iteration.",
+    "The final result feels like an exceptionally crafted developer portfolio, not a generic AI-generated 3D demo."
+  ],
+  "explicit_non_goals": [
+    "No backend.",
+    "No API or database.",
+    "No authentication.",
+    "No functional contact form.",
+    "No routing.",
+    "No dynamic CMS/content system.",
+    "No custom GLSL shader system.",
+    "No mobile-optimized 3D navigation system.",
+    "No excessive post-processing or particle spectacle.",
+    "No marketing language that exaggerates Temi's abilities.",
+    "No ecommerce_app_mb project.",
+    "No structural redesign outside the defined concept without user approval."
+  ]
+}
