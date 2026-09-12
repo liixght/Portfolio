@@ -22,6 +22,42 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide scrollbars while keeping native scrolling (used by the work list). */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior: auto;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* The work list is only scroll-interactive while its section is on screen;
+   otherwise the whole subtree is inert so wheel falls through to the scroller. */
+.work-scroll-inactive,
+.work-scroll-inactive * {
+  pointer-events: none;
+}
+
+.work-scroll-active {
+  pointer-events: auto;
+}
+
+/* Overlay labels must not swallow wheel/scroll — let it fall through to the
+   scroller while interactive children opt back in with pointer-events-auto. */
+.hero-html,
+.hero-scroll-cue,
+.about-html,
+.about-panel-html,
+.skills-panel-html,
+.tools-panel-html,
+.work-html,
+.work-cards-html,
+.work-contact-html {
+  pointer-events: none;
+}
+
 @theme {
   --color-gold: #ccaa77;
   --color-dark-gold: #9c7841;

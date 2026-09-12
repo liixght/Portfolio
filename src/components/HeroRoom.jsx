@@ -11,8 +11,10 @@ export default function HeroRoom() {
 
       <SectionLabel
         position={[0, 0.3, 0]}
-        focus={0}
-        fadeRadius={0.16}
+        windowStart={0}
+        windowEnd={0.24}
+        fadeIn={0.06}
+        fadeOut={0.08}
         wrapperClass="hero-html"
         className="flex select-none flex-col items-center text-center"
       >
@@ -33,8 +35,10 @@ export default function HeroRoom() {
 
       <SectionLabel
         position={[0, -3.05, 0]}
-        focus={0}
-        fadeRadius={0.14}
+        windowStart={0}
+        windowEnd={0.26}
+        fadeIn={0.06}
+        fadeOut={0.08}
         wrapperClass="hero-scroll-cue"
         className="flex select-none flex-col items-center gap-1.5"
       >
