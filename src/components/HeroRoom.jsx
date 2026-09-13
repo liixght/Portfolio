@@ -2,6 +2,7 @@ import Room from './Room'
 import RoomDisc from './RoomDisc'
 import HeroCrystal from './HeroCrystal'
 import SectionLabel from './SectionLabel'
+import { SITE } from '../config/site.js'
 
 export default function HeroRoom() {
   return (
@@ -29,7 +30,7 @@ export default function HeroRoom() {
         </p>
         <div className="mt-4 h-px w-20 bg-gold/60" />
         <p className="mt-4 max-w-md text-sm leading-relaxed text-off-white/90 sm:text-base">
-          Computer Science student actively building real software.
+          {SITE.tagline}
         </p>
       </SectionLabel>
 

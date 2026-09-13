@@ -1,12 +1,40 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import { useLoader } from '@react-three/fiber'
+import { Billboard } from '@react-three/drei'
 import Room from './Room'
 import RoomDisc from './RoomDisc'
 import SectionLabel from './SectionLabel'
 import { skills, skillCategories } from '../data/skills'
 import { tools } from '../data/tools'
+import { SITE } from '../config/site'
+import * as THREE from 'three'
 
 const GOLD = '#ccaa77'
+
+// Center focal visual — config-driven profile image sitting inside the ring
+// opening. Renders nothing unless SITE.profileImage is configured, so a
+// missing config can never break the room.
+function CenterProfile() {
+  const path = SITE.profileImage
+  if (!path) return null
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const texture = useLoader(THREE.TextureLoader, path)
+
+  return (
+    <group position={[0, 0, -0.01]}>
+      <mesh>
+        <circleGeometry args={[0.72, 48]} />
+        <meshBasicMaterial map={texture} transparent side={THREE.DoubleSide} />
+      </mesh>
+      <mesh position={[0, 0, -0.02]}>
+        <ringGeometry args={[0.72, 0.76, 48]} />
+        <meshBasicMaterial color={GOLD} transparent opacity={0.85} />
+      </mesh>
+    </group>
+  )
+}
 
 const PANEL =
   'w-[300px] flex flex-col rounded-xl border border-off-white/10 bg-black/45 p-4 text-left shadow-[0_10px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md'
@@ -89,7 +117,7 @@ function SkillsPanel() {
                 .map((skill) => (
                   <span
                     key={skill.name}
-                    className={`rounded-full border px-2 py-0.5 text-[11px] ${LABEL_STYLE[skill.proficiencyLabel]}`}
+                    className={`rounded-full border px-2 py-0.5 text-[11px] ${LABEL_STYLE[skill.proficiencyLabel]} hover:border-gold/50 hover:text-gold`}
                   >
                     {skill.name}
                   </span>
@@ -153,6 +181,9 @@ export default function AboutRoom() {
       <RoomDisc />
 
       <group position={[0, 0.4, 0]} rotation={[Math.PI / 2.4, 0.3, 0]}>
+        <Billboard position={[0, 0, -0.01]}>
+          <CenterProfile />
+        </Billboard>
         <mesh>
           <torusGeometry args={[1.5, 0.05, 12, 64]} />
           <meshStandardMaterial

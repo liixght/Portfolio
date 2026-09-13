@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import BackgroundStars from "./BackgroundStars"
 import { Canvas } from '@react-three/fiber'
 import { ScrollControls } from '@react-three/drei'
 import CameraRig from './CameraRig'
@@ -93,7 +94,8 @@ export default function PortfolioCanvas() {
             projects · contact
           </p>
         </SectionLabel>
+        <BackgroundStars />
       </ScrollControls>
-    </Canvas>
+</Canvas>
   )
 }
