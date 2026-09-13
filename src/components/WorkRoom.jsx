@@ -108,26 +108,26 @@ export default function WorkRoom() {
                   </div>
                 </>
               )}
-              {(featured.length > 0 || others.length > 0) && (
-                <div className="pointer-events-none mt-6 flex flex-col items-center gap-1.5">
-                  <span className="animate-pulse text-[10px] uppercase tracking-[0.3em] text-off-white/50">
-                    scroll
-                  </span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-5 animate-pulse text-gold"
-                  >
-                    <path d="M12 5v9" />
-                    <path d="M5.5 10l6.5 5 6.5-5" />
-                  </svg>
-                </div>
-              )}
             </div>
+            {(featured.length > 0 || others.length > 0) && (
+              <div className="pointer-events-none mt-6 flex flex-col items-center gap-1.5">
+                <span className="animate-pulse text-[10px] uppercase tracking-[0.3em] text-off-white/50">
+                  scroll
+                </span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-5 animate-pulse text-gold"
+                >
+                  <path d="M12 5v9" />
+                  <path d="M5.5 10l6.5 5 6.5-5" />
+                </svg>
+              </div>
+            )}
           </div>
         </div>
       </SectionLabel>

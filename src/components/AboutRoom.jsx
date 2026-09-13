@@ -37,7 +37,7 @@ function CenterProfile() {
 }
 
 const PANEL =
-  'w-[300px] flex flex-col rounded-xl border border-off-white/10 bg-black/45 p-4 text-left shadow-[0_10px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md'
+  'w-[360px] flex flex-col rounded-xl border border-off-white/10 bg-black/45 p-5 text-left shadow-[0_10px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md'
 const PANEL_TITLE = 'font-mono text-[10px] uppercase tracking-[0.35em] text-gold/70'
 const MORE_BUTTON =
   'pointer-events-auto self-start mt-4 inline-flex items-center gap-2 rounded-full border border-off-white/50 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-off-white/80 transition-colors hover:border-off-white hover:bg-off-white/10 hover:text-off-white'
@@ -88,6 +88,14 @@ function AboutPanel() {
         Computer Science student actively building real software — responsive web interfaces,
         small utilities, and ongoing experiments.
       </p>
+      <div className="mt-3 space-y-1.5 text-xs leading-relaxed text-off-white/70">
+        <p className="flex items-center gap-2">
+          <span className="h-1 w-1 rounded-full bg-gold" /> building with React, Vite &amp; R3F
+        </p>
+        <p className="flex items-center gap-2">
+          <span className="h-1 w-1 rounded-full bg-gold" /> always happy to talk code &amp; collabs
+        </p>
+      </div>
       <Expandable open={open} onToggle={() => setOpen((o) => !o)}>
         <div className="mt-3 space-y-2 border-t border-off-white/10 pt-3">
           <p className="text-xs leading-relaxed text-off-white/70">
@@ -147,7 +155,7 @@ function SkillsPanel() {
 function ToolsPanel() {
   const [open, setOpen] = useState(false)
   return (
-    <div className="w-[600px] max-w-[92vw] flex flex-col rounded-xl border border-off-white/10 bg-black/45 p-4 text-left shadow-[0_10px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md">
+    <div className="w-[680px] max-w-[92vw] flex flex-col rounded-xl border border-off-white/10 bg-black/45 p-4 text-left shadow-[0_10px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md">
       <p className={PANEL_TITLE}>toolchain</p>
       <div className="mt-2 flex flex-wrap gap-2">
         {tools.map((tool) => (
@@ -205,7 +213,7 @@ export default function AboutRoom() {
       </group>
 
       <SectionLabel
-        position={[-2.75, 0.55, 0]}
+        position={[-4.15, 0.55, 0]}
         windowStart={0.46}
         windowEnd={0.8}
         fadeIn={0.18}
@@ -217,7 +225,7 @@ export default function AboutRoom() {
       </SectionLabel>
 
       <SectionLabel
-        position={[2.75, 0.55, 0]}
+        position={[3.75, 0.55, 0]}
         windowStart={0.5}
         windowEnd={0.8}
         fadeIn={0.18}
