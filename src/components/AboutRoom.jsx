@@ -85,12 +85,15 @@ function AboutPanel() {
     <div className={PANEL}>
       <p className={PANEL_TITLE}>about</p>
       <p className="mt-2 text-sm leading-relaxed text-off-white/90">
-        Computer Science student actively building real software — responsive web interfaces,
-        small utilities, and ongoing experiments.
+        Computer Science student actively learning and building — responsive web interfaces,
+        Mobile Applications, and ongoing experiments.
       </p>
       <div className="mt-3 space-y-1.5 text-xs leading-relaxed text-off-white/70">
         <p className="flex items-center gap-2">
           <span className="h-1 w-1 rounded-full bg-gold" /> building with React, Vite &amp; R3F
+        </p>
+        <p className="flex items-center gap-2">
+          <span className="h-1 w-1 rounded-full bg-gold" /> building mobile applications with Flutter & Dart
         </p>
         <p className="flex items-center gap-2">
           <span className="h-1 w-1 rounded-full bg-gold" /> always happy to talk code &amp; collabs
