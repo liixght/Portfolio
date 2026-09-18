@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
+import { useSimpleMode } from '../hooks/useSimpleMode'
 
 const GOLD = '#ccaa77'
 const DARK_GOLD = '#9c7841'
@@ -8,6 +9,7 @@ export default function HeroCrystal() {
   const crystalRef = useRef()
   const wireRef = useRef()
   const groupRef = useRef()
+  const simpleMode = useSimpleMode()
 
   useFrame((state, delta) => {
     const t = state.clock.elapsedTime
@@ -25,35 +27,39 @@ export default function HeroCrystal() {
   })
 
   return (
-    <group ref={groupRef}>
-      <mesh ref={crystalRef} position={[0, 0.3, 0]} scale={1.35}>
-        <octahedronGeometry args={[1, 0]} />
-        <meshStandardMaterial
-          color={DARK_GOLD}
-          flatShading
-          metalness={0.85}
-          roughness={0.25}
-          wireframe={false}
-        />
-      </mesh>
-      <mesh ref={wireRef} position={[0, 0.3, 0]} scale={1.75}>
-        <octahedronGeometry args={[1, 1]} />
-        <meshBasicMaterial
-          color={GOLD}
-          wireframe
-          transparent
-          opacity={0.28}
-        />
-      </mesh>
-      <mesh position={[0, 0.3, 0]} scale={0.55}>
-        <octahedronGeometry args={[1, 2]} />
-        <meshStandardMaterial
-          color={GOLD}
-          flatShading
-          metalness={0.9}
-          roughness={0.2}
-        />
-      </mesh>
-    </group>
+    simpleMode ? null : (
+    <>
+      <group ref={groupRef}>
+        <mesh ref={crystalRef} position={[0, 0.3, 0]} scale={1.35}>
+          <octahedronGeometry args={[1, 0]} />
+          <meshStandardMaterial
+            color={DARK_GOLD}
+            flatShading
+            metalness={0.85}
+            roughness={0.25}
+            wireframe={false}
+          />
+        </mesh>
+        <mesh ref={wireRef} position={[0, 0.3, 0]} scale={1.75}>
+          <octahedronGeometry args={[1, 1]} />
+          <meshBasicMaterial
+            color={GOLD}
+            wireframe
+            transparent
+            opacity={0.28}
+          />
+        </mesh>
+        <mesh position={[0, 0.3, 0]} scale={0.55}>
+          <octahedronGeometry args={[1, 2]} />
+          <meshStandardMaterial
+            color={GOLD}
+            flatShading
+            metalness={0.9}
+            roughness={0.2}
+          />
+        </mesh>
+      </group>
+      </>
+    )
   )
 }

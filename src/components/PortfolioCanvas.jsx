@@ -7,10 +7,13 @@ import HeroRoom from './HeroRoom'
 import AboutRoom from './AboutRoom'
 import WorkRoom from './WorkRoom'
 import SectionLabel from './SectionLabel'
+import { useSimpleMode } from '../hooks/useSimpleMode'
 
 const GOLD = '#ccaa77'
+ 
 
 function useReloadSafeScroll() {
+  
   useEffect(() => {
     const findScroller = () =>
       [...document.querySelectorAll('div')].reduce((best, el) => {
@@ -41,10 +44,11 @@ function useReloadSafeScroll() {
 
 export default function PortfolioCanvas() {
   useReloadSafeScroll()
+  const simpleMode = useSimpleMode()
   return (
     <Canvas
-      gl={{ antialias: true, alpha: false }}
-      dpr={[1, 2]}
+      gl={{ antialias: !simpleMode, alpha: false }}
+      dpr={simpleMode ? 1 : [1, 2]}
       camera={{ position: [0, 0, 8], fov: 45, near: 0.1, far: 100 }}
     >
       <color attach="background" args={['#0a0a0a']} />
@@ -74,7 +78,7 @@ export default function PortfolioCanvas() {
           <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold/60">02</p>
           <h2 className="mt-1 text-xl font-semibold text-off-white">My Craft</h2>
           <p className="mt-1 text-[11px] uppercase tracking-[0.25em] text-off-white/40">
-            about · skills · tools
+            about · skills . tools
           </p>
         </SectionLabel>
         <SectionLabel

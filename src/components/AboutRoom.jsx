@@ -7,6 +7,7 @@ import RoomDisc from './RoomDisc'
 import SectionLabel from './SectionLabel'
 import { skills, skillCategories } from '../data/skills'
 import { tools } from '../data/tools'
+import { useSimpleMode } from '../hooks/useSimpleMode.js'
 import { SITE } from '../config/site'
 import * as THREE from 'three'
 
@@ -184,33 +185,36 @@ function ToolsPanel() {
 }
 
 export default function AboutRoom() {
+  const simplemode = useSimpleMode();
   return (
     <Room position={[0, 0, -12]}>
       <RoomDisc />
-
-      <group position={[0, 0.4, 0]} rotation={[Math.PI / 2.4, 0.3, 0]}>
-        <Billboard position={[0, 0, -0.01]}>
-          <CenterProfile />
-        </Billboard>
-        <mesh>
-          <torusGeometry args={[1.5, 0.05, 12, 64]} />
-          <meshStandardMaterial
-            color={GOLD}
-            flatShading
-            metalness={0.75}
-            roughness={0.3}
-          />
-        </mesh>
-        <mesh scale={1.12} rotation={[0, 0.6, 0]}>
-          <torusGeometry args={[1.5, 0.022, 8, 64]} />
-          <meshBasicMaterial
-            color="#9c7841"
-            wireframe
-            transparent
-            opacity={0.3}
-          />
-        </mesh>
-      </group>
+      {simplemode ? null : (
+        <>
+          <group position={[0, 0.4, 0]} rotation={[Math.PI / 2.4, 0.3, 0]}>
+            <Billboard position={[0, 0, -0.01]}>
+              <CenterProfile />
+            </Billboard>
+            <mesh>
+              <torusGeometry args={[1.5, 0.05, 12, 64]} />
+              <meshStandardMaterial
+                color={GOLD}
+                flatShading
+                metalness={0.75}
+                roughness={0.3}
+              />
+            </mesh>
+            <mesh scale={1.12} rotation={[0, 0.6, 0]}>
+              <torusGeometry args={[1.5, 0.022, 8, 64]} />
+              <meshBasicMaterial
+                color="#9c7841"
+                wireframe
+                transparent
+                opacity={0.3}
+              />
+            </mesh>
+          </group>
+        </>)}
 
       <SectionLabel
         position={[-4.15, 0.55, 0]}

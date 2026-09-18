@@ -7,6 +7,7 @@ import SectionLabel from './SectionLabel'
 import ProjectCard from './ProjectCard'
 import useLockedInnerScroll from '../hooks/useLockedInnerScroll'
 import { projects } from '../data/projects'
+import { useSimpleMode } from '../hooks/useSimpleMode'
 import { mainProgress } from '../lib/mainProgress'
 import { SITE } from '../config/site'
 
@@ -32,6 +33,8 @@ export default function WorkRoom() {
   const featured = projects.filter((project) => project.featured === true)
   const others = projects.filter((project) => project.featured !== true)
 
+  const simplemode = useSimpleMode()
+
   useFrame(() => {
     mainProgress.update(scroll.offset)
     if (scroll.el && !scroll.el.classList.contains('no-scrollbar')) {
@@ -47,28 +50,30 @@ export default function WorkRoom() {
   return (
     <Room position={[0, 0, -24]}>
       <RoomDisc />
-
-      <group position={[0, 0.3, 0]} rotation={[0, 0.4, 0]}>
-        <mesh>
-          <boxGeometry args={[1.7, 2.5, 0.3]} />
-          <meshStandardMaterial
-            color="#262626"
-            flatShading
-            metalness={0.25}
-            roughness={0.7}
-          />
-          <Edges threshold={15} color={GOLD} />
-        </mesh>
-        <mesh position={[0, 0, 0.28]}>
-          <boxGeometry args={[1.1, 1.7, 0.06]} />
-          <meshStandardMaterial
-            color={GOLD}
-            flatShading
-            metalness={0.8}
-            roughness={0.25}
-          />
-        </mesh>
-      </group>
+      {simplemode ? null : (
+        <>
+          <group position={[0, 0.3, 0]} rotation={[0, 0.4, 0]}>
+            <mesh>
+              <boxGeometry args={[1.7, 2.5, 0.3]} />
+              <meshStandardMaterial
+                color="#262626"
+                flatShading
+                metalness={0.25}
+                roughness={0.7}
+              />
+              <Edges threshold={15} color={GOLD} />
+            </mesh>
+            <mesh position={[0, 0, 0.28]}>
+              <boxGeometry args={[1.1, 1.7, 0.06]} />
+              <meshStandardMaterial
+                color={GOLD}
+                flatShading
+                metalness={0.8}
+                roughness={0.25}
+              />
+            </mesh>
+          </group>
+        </>)}
 
       <SectionLabel
         position={[0, 0.34, 0]}

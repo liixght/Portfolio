@@ -1,10 +1,14 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import PortfolioCanvas from './components/PortfolioCanvas'
 import SceneOverlay from './components/SceneOverlay'
+import WebGLFallback from './components/WebGLFallback'
+import { hasWebGL } from './lib/hasWebGL'
 import { htmlPortal } from './components/htmlPortal'
 import { mainProgress } from './lib/mainProgress'
 
 export default function App() {
+  const [webglSupported] = useState(hasWebGL)
+
   const registerFill = useCallback((node) => {
     mainProgress.set(node)
   }, [])
@@ -13,6 +17,10 @@ export default function App() {
     htmlPortal.current = node
   }, [])
 
+  if (!webglSupported) {
+    return <WebGLFallback />
+  }
+
   return (
     <div
       ref={registerPortal}
@@ -20,10 +28,6 @@ export default function App() {
     >
       <PortfolioCanvas />
       <SceneOverlay />
-      {/* Gold viewport line — the "new scrollbar": fills with page scroll
-          progress (driven from WorkRoom's useFrame via mainProgress.update),
-          replacing the hidden native page scrollbar. pointer-events none so
-          it never captures wheel over the canvas. */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[60] h-[2px]">
         <div
           ref={registerFill}

@@ -1,6 +1,10 @@
 import { SITE } from '../config/site'
+import { useSimpleMode } from '../hooks/useSimpleMode'
+import { qualityStore } from '../lib/qualityStore'
 
 export default function SceneOverlay() {
+  const simpleMode = useSimpleMode()
+
   return (
     <div
       id="nav-row"
@@ -12,12 +16,22 @@ export default function SceneOverlay() {
       >
         {SITE.alias}
       </span>
-      <a
-        href={`mailto:${SITE.email}`}
-        className="pointer-events-auto text-xs tracking-wide text-off-white/60 transition-colors hover:text-gold"
-      >
-        {SITE.email}
-      </a>
+      <div className="pointer-events-auto flex items-center gap-4">
+        <button
+          type="button"
+          onClick={() => qualityStore.toggle()}
+          title="Reduce visual effects for better performance on lower-end devices"
+          className="rounded-full border border-off-white/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-off-white/60 transition-colors hover:border-gold/50 hover:text-gold"
+        >
+          {simpleMode ? 'simple: on' : 'simple: off'}
+        </button>
+        
+          <a href={`mailto:${SITE.email}`}
+          className="text-xs tracking-wide text-off-white/60 transition-colors hover:text-gold"
+        >
+          {SITE.email}
+        </a>
+      </div>
     </div>
   )
 }

@@ -1,10 +1,12 @@
-import Room from './Room'
-import RoomDisc from './RoomDisc'
-import HeroCrystal from './HeroCrystal'
-import SectionLabel from './SectionLabel'
-import { SITE } from '../config/site.js'
+import Room from "./Room";
+import RoomDisc from "./RoomDisc";
+import HeroCrystal from "./HeroCrystal";
+import SectionLabel from "./SectionLabel";
+import { useSimpleMode } from "../hooks/useSimpleMode.js";
+import { SITE } from "../config/site.js";
 
 export default function HeroRoom() {
+  const simpleMode = useSimpleMode();
   return (
     <Room position={[0, 0, 0]}>
       <HeroCrystal />
@@ -35,7 +37,7 @@ export default function HeroRoom() {
       </SectionLabel>
 
       <SectionLabel
-        position={[0, -3.05, 0]}
+        position={[0, -2.90, 0]}
         windowStart={0}
         windowEnd={0.26}
         fadeIn={0.06}
@@ -43,13 +45,20 @@ export default function HeroRoom() {
         wrapperClass="hero-scroll-cue"
         className="flex select-none flex-col items-center gap-1.5"
       >
-        <span className="animate-pulse text-[10px] uppercase tracking-[0.3em] text-off-white/50">
-          scroll
-        </span>
-        <div className="flex h-6 w-4 items-start justify-center rounded-full border border-off-white/30 p-1">
-          <div className="h-1.5 w-0.5 animate-pulse rounded-full bg-gold" />
+        <div className="flex flex-col gap-5 w-96 m-auto justify-center items-center">
+          <span className="animate-pulse text-[16px] uppercase tracking-[0.3em] text-off-white/50">
+            {simpleMode ? null :  "Click `s` for Simple mode" }
+          </span>
+          <div className="flex flex-col justify-center items-center gap-2">
+            <span className="animate-pulse text-[12px] uppercase tracking-[0.3em] text-off-white/50">
+              scroll
+            </span>
+            <div className="flex h-6 w-4 items-start justify-center rounded-full border border-off-white/30 p-1">
+              <div className="h-1.5 w-0.5 animate-pulse rounded-full bg-gold" />
+            </div>
+          </div>
         </div>
       </SectionLabel>
     </Room>
-  )
+  );
 }
